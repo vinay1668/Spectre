@@ -2,7 +2,7 @@ package web
 
 import (
 	"github.com/labstack/echo"
-	auth_controller "github.com/vinay1668/go-htmx/controllers/web"
+	auth_controller "github.com/viay1668/spectre/controllers/web"
 )
 
 func RegisterAuthRoutes(g *echo.Group) {

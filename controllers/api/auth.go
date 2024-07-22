@@ -4,18 +4,25 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
+	"github.com/viay1668/spectre/templates/common"
 )
 
 func HandleLogin(c echo.Context) error {
-	email := c.FormValue("email")
+	username := c.FormValue("username")
 	password := c.FormValue("password")
 
 	// Here you would typically validate the credentials against a database
 	// For this example, we'll use a simple check
-	if email == "user@example.com" && password == "password" {
-		return c.HTML(http.StatusOK, `<div id="login-response" class="text-green-500">Login successful!</div>`)
+	if username == "user@example.com" && password == "password" {
+		//set session cookie
+		jsonResponse := map[string]string{
+			"username": username,
+			"password": password,
+		}
+		return c.JSON(http.StatusOK, jsonResponse)
+
 	} else {
-		return c.HTML(http.StatusUnauthorized, `<div id="login-response" class="text-red-500">Invalid credentials</div>`)
+		return common.LoginFailure().Render(c.Request().Context(), c.Response().Writer)
 	}
 }
 

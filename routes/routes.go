@@ -2,8 +2,8 @@ package routes
 
 import (
 	"github.com/labstack/echo"
-	"github.com/vinay1668/go-htmx/routes/api"
-	"github.com/vinay1668/go-htmx/routes/web"
+	"github.com/viay1668/spectre/routes/api"
+	"github.com/viay1668/spectre/routes/web"
 )
 
 func RegisterRoutes(e *echo.Echo) {

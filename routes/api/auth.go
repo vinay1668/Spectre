@@ -2,7 +2,7 @@ package api
 
 import (
 	"github.com/labstack/echo"
-	auth_controller "github.com/vinay1668/go-htmx/controllers/api"
+	auth_controller "github.com/viay1668/spectre/controllers/api"
 )
 
 func RegisterAuthRoutes(g *echo.Group) {

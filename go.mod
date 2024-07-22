@@ -1,4 +1,4 @@
-module github.com/vinay1668/go-htmx
+module github.com/viay1668/spectre
 
 go 1.21
 

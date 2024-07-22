@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/labstack/echo"
-	"github.com/vinay1668/go-htmx/templates"
+	"github.com/viay1668/spectre/templates"
 )
 
 func RenderDashboard(c echo.Context) error {

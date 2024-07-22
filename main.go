@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/go-chi/chi/middleware"
 	"github.com/labstack/echo"
-	"github.com/vinay1668/go-htmx/routes"
+	"github.com/viay1668/spectre/routes"
 )
 
 func main() {
