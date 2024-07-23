@@ -4,12 +4,14 @@ templ Login() {
 	<script>
 
 	function handleLoginResponse(response) {
-		const data = JSON.parse(response);
+    const response = event.detail.xhr.response || event.detail.response;
+         const data = JSON.parse(response);
 		if (data.username && data.password) {
-			alert('Login successful');
 			localStorage.setItem('username', data.username);
 			localStorage.setItem('password', data.password);
-			document.getElementById('login-response').innerHTML = '<p class="text-green-500">Login successful!</p>';
+			alert('Login successful! Data stored in local storage.');
+		} else {
+			alert('Login failed. Invalid response data.');
 		}
     }
 	
@@ -17,7 +19,7 @@ templ Login() {
 	<div id="login-container">
 		<div class="bg-gray-800 p-8 rounded-lg shadow-lg w-96">
 			<h3 class="text-3xl font-medium mb-6 text-white text-center">Login</h3>
-			<form hx-post="/api/login" hx-target="#login-response" hx-swap="outerHTML" hx-on::after="console.log('After request event fired')">
+			<form hx-post="/api/login" hx-target="#login-response" hx-trigger="submit" hx-swap="outerHTML" hx-on::after-request="handleLoginResponse(event)">
 				<div class="mb-4">
 					<label for="username" class="block text-sm font-medium text-gray-300 mb-2">Username</label>
 					<input type="username" id="username" name="username" class="w-full px-3 py-2 bg-gray-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required/>

@@ -8,6 +8,8 @@ package common
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
+var isAuthen = false
+
 func Navbar() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
@@ -26,7 +28,41 @@ func Navbar() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"min-h-screen bg-[#0F172A] text-white flex flex-col\"><nav class=\"p-4\"><div class=\"container mx-auto flex justify-between items-center\"><h1 class=\"text-3xl font-bold\">Spectr</h1><div><button hx-get=\"/login\" hx-target=\"#main-content\" class=\"text-gray-400 hover:text-gray-200 py-2 px-4 mr-2 transition duration-300 focus:text-white\">Login</button> <button hx-get=\"/signup\" hx-target=\"#main-content\" class=\"text-gray-400 hover:text-gray-200 py-2 px-4 transition duration-300 focus:text-white\">Sign Up</button></div></div></nav><div class=\"flex items-center justify-center flex-grow\"><div id=\"main-content\" class=\"w-full max-w-md\"><!-- Content to be replaced will go here --></div></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"min-h-screen bg-[#0F172A] text-white flex flex-col\"><nav class=\"p-4\"><div class=\"container mx-auto flex justify-between items-center\"><h1 class=\"text-3xl font-bold\">Spectr</h1>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = authButtons().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></nav><div class=\"flex items-center justify-center flex-grow\"><div id=\"main-content\" class=\"w-full max-w-md\"><!-- Content to be replaced will go here --></div></div></div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return templ_7745c5c3_Err
+	})
+}
+
+func authButtons() templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var2 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var2 == nil {
+			templ_7745c5c3_Var2 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"auth-buttons\"><button hx-get=\"/login\" hx-target=\"#main-content\" class=\"text-gray-400 hover:text-gray-200 py-2 px-4 mr-2 transition duration-300 focus:text-white\">Login</button> <button hx-get=\"/signup\" hx-target=\"#main-content\" class=\"text-gray-400 hover:text-gray-200 py-2 px-4 transition duration-300 focus:text-white\">Sign Up</button></div><script>\n\talert(\"uihi\")\n        if (localStorage.getItem('username') && localStorage.getItem('password')) {\n\t\t\talert(localStorage.getItem('username'))\n            document.getElementById('auth-buttons').style.display = 'none';\n        }\n    </script>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
