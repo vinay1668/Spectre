@@ -1,7 +1,10 @@
 package components
 
-import "github.com/viay1668/spectre/templates/common"
+import "github.com/viay1668/spectre/templates/common/userauth"
 
 templ Main() {
-	@common.Navbar()
+	<div>
+		@userauth.Navbar()
+		@Dashboard()
+	</div>
 }

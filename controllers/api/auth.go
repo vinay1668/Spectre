@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
-	"github.com/viay1668/spectre/templates/common"
+	"github.com/viay1668/spectre/templates/common/userauth"
 )
 
 func HandleLogin(c echo.Context) error {
@@ -22,7 +22,7 @@ func HandleLogin(c echo.Context) error {
 		return c.JSON(http.StatusOK, jsonResponse)
 
 	} else {
-		return common.LoginFailure().Render(c.Request().Context(), c.Response().Writer)
+		return userauth.LoginFailure().Render(c.Request().Context(), c.Response().Writer)
 	}
 }
 

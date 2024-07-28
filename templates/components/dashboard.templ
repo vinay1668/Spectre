@@ -1,0 +1,65 @@
+package components
+
+templ Dashboard() {
+	<div class="min-h-screen bg-[#0F172A] text-white flex flex-col">
+		<nav class="p-4 bg-[#1E293B]">
+			<div class="container mx-auto flex justify-between items-center">
+				<h1 class="text-3xl font-bold">GopherQuest</h1>
+				<div>
+					<button hx-get="/profile" hx-target="#main-content" class="text-gray-300 hover:text-white py-2 px-4 mr-2 transition duration-300">Profile</button>
+					<button hx-get="/leaderboard" hx-target="#main-content" class="text-gray-300 hover:text-white py-2 px-4 transition duration-300">Leaderboard</button>
+				</div>
+			</div>
+		</nav>
+		<div id="main-content" class="flex-grow p-8">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<div class="bg-[#2D3748] p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
+					<h2 class="text-2xl font-semibold mb-4">Current Quest</h2>
+					<p class="text-gray-300 mb-4">Master Goroutines</p>
+					<div class="w-full bg-gray-700 rounded-full h-2.5">
+						<div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
+					</div>
+					<p class="text-right text-sm mt-2">45% Complete</p>
+				</div>
+				<div class="bg-[#2D3748] p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
+					<h2 class="text-2xl font-semibold mb-4">Gopher Points</h2>
+					<p class="text-4xl font-bold text-yellow-400">1,337</p>
+					<p class="text-sm text-gray-400 mt-2">Level 5 Gopher Wizard</p>
+				</div>
+				<div class="bg-[#2D3748] p-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-300">
+					<h2 class="text-2xl font-semibold mb-4">Next Challenge</h2>
+					<p class="text-gray-300 mb-2">Concurrency Conundrum</p>
+					<button hx-get="/start-challenge" hx-target="#main-content" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+						Start Challenge
+					</button>
+				</div>
+			</div>
+			<div class="mt-12">
+				<h2 class="text-2xl font-semibold mb-6">Recent Achievements</h2>
+				<div class="flex space-x-4 overflow-x-auto pb-4">
+					//for _, achievement := range recentAchievements {
+					// <div class="flex-shrink-0 w-48 bg-[#2D3748] p-4 rounded-lg shadow-md">
+					// 	<img src={ achievement.IconURL } alt={ achievement.Name } class="w-16 h-16 mx-auto mb-2"/>
+					// 	<p class="text-center font-semibold">{ achievement.Name }</p>
+					// </div>
+					//}
+				</div>
+			</div>
+		</div>
+		<footer class="bg-[#1E293B] p-4 text-center text-gray-400">
+			<p>&copy; 2024 GopherQuest. Keep coding and stay goofy!</p>
+		</footer>
+	</div>
+}
+
+templ LoginSuccess() {
+	<div id="login-response" hx-swap-oob="true">
+		<p class="text-green-500">Login successful!</p>
+	</div>
+}
+
+// templ LoginFailure() {
+// 	<div id="login-response" hx-swap-oob="true">
+// 		<p class="text-red-500">Invalid credentials</p>
+// 	</div>
+// }
